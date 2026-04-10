@@ -1,0 +1,11 @@
+{% with category_obj=category|default:post.category %}
+  {% if category_obj and category_obj.slug %}
+    <a class="text-muted" href="{% url 'blog:category_posts' category_obj.slug %}">
+      {{ category_obj.title }}
+    </a>
+  {% elif category_obj %}
+    {{ category_obj.title }}
+  {% else %}
+    Без категории
+  {% endif %}
+{% endwith %}
